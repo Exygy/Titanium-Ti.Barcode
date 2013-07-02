@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/UniversalResultParser.m \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/UniversalResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/ResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/../parsedResults/ParsedResult.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/CBarcodeFormat.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/SMSTOResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/URLResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/TelResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/URLTOResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/SMSResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/PlainEmailResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/MeCardParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/DoCoMoResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/EmailDoCoMoResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/BookmarkDoCoMoResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/GeoResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/TextResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/ProductResultParser.h \
+  /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/Classes/resultParsers/BizcardResultParser.h

@@ -1,0 +1,163 @@
+Tbarcode
+v5
+r1
+cCheck dependencies
+cProcessPCH /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.pth TiBarcode_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cProcessPCH++ /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.pth TiBarcode_Prefix.pch normal armv7 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm normal armv7 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/libTiBarcode.a normal armv7
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk
+c0000000051AE8A910000000000000110
+t1370393233
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c00000000510836E800000000006B1F40
+t1359492840
+s7020352
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c00000000510836E80000000000322700
+t1359492840
+s3286784
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreVideo.framework/CoreVideo
+c00000000510836E80000000000041310
+t1359492840
+s267024
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c00000000510836E9000000000062AD10
+t1359492841
+s6466832
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c00000000510836E900000000000015F7
+t1359492841
+s5623
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c00000000510836EA00000000003596B0
+t1359492842
+s3511984
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c00000000510836ED00000000011BCDF0
+t1359492845
+s18599408
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm
+c00000000519CBB880000000000004BE8
+t1369226120
+s19432
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m
+c00000000519CBB880000000000000102
+t1369226120
+s258
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/TiBarcode_Prefix.pch
+c00000000519CBB88000000000000003E
+t1369226120
+s62
+i<Foundation/Foundation.h>
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/libTiBarcode.a
+t2
+s0
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcode.LinkFileList
+c0000000051B8F9EF0000000000000146
+t1371077103
+s326
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.o
+t2
+s0
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.o
+t2
+s0
+
+N/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/build/Release-iphoneos/libZXingWidget.a
+c0000000051B8F9EF00000000007110C0
+t1371077103
+s7409856
+
+N/var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.pth
+t2
+s0
+
+N/var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.pth
+t2
+s0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies1287ec6f3169b741^849ff06f3169b741^---0#1#0#--18"Check dependencies36"3422BB62-1432-411A-8948-D0D8826C796F-
+
+CCompileC build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm normal armv7 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+s392769904.258754
+e392769904.950309
+r1
+xCompileC
+xbuild/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.o
+x/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm
+xnormal
+xarmv7
+xobjective-c++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm8c6542703169b741^8846f3703169b741^---0#0#0#-19%DVTDocumentLocation2@112"file://localhost/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm0000000000000000^4246"CompileC build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.o Classes/TiBarcodeModule.mm normal armv7 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/pierreexygy/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/ImageMagick/bin:/Users/pierreexygy/.rvm/bin:/usr/local/mysql/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wno-parentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wno-unused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -DTI_VERSION= -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -g -Wno-sign-conversion -miphoneos-version-min=4.0 -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-generated-files.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-own-target-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-all-target-headers.hmap -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-project-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/include -Izxing/cpp/core/src -Izxing/iphone/ZXingWidget/Classes -Izxing/iphone/ZXingWidget/Classes/actions -Izxing/iphone/ZXingWidget/Classes/parsedResults -Izxing/iphone/ZXingWidget/Classes/resultParsers "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include" "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include/TiCore" -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources/armv7 -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources -F/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos -DTI_POST_1_2 -include /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch -MMD -MT dependencies -MF /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.d --serialize-diagnostics /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.dia -c /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModule.mm -o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModule.o36"3C5C1BC8-71C0-4AC3-8BCB-1A7DC12D9A8F-
+
+CCompileC build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s392769904.209027
+e392769904.238948
+r1
+xCompileC
+xbuild/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.o
+x/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Compile /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m8cbb35703169b741^662d3d703169b741^---0#0#0#-19%DVTDocumentLocation2@117"file://localhost/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m0000000000000000^4186"CompileC build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.o Classes/TiBarcodeModuleAssets.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/pierreexygy/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/ImageMagick/bin:/Users/pierreexygy/.rvm/bin:/usr/local/mysql/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wno-parentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wno-unused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DTI_VERSION= -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=4.0 -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-generated-files.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-own-target-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-all-target-headers.hmap -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-project-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/include -Izxing/cpp/core/src -Izxing/iphone/ZXingWidget/Classes -Izxing/iphone/ZXingWidget/Classes/actions -Izxing/iphone/ZXingWidget/Classes/parsedResults -Izxing/iphone/ZXingWidget/Classes/resultParsers "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include" "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include/TiCore" -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources/armv7 -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources -F/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos -DTI_POST_1_2 -include /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch -MMD -MT dependencies -MF /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.d --serialize-diagnostics /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.dia -c /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/Classes/TiBarcodeModuleAssets.m -o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcodeModuleAssets.o36"244A72FA-987E-4DAB-A0D7-BBB2FFF00130-
+
+CLibtool /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/libTiBarcode.a normal armv7
+s392769904.970043
+e392769905.245116
+r1
+xLibtool
+x/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/libTiBarcode.a
+xnormal
+xarmv7
+o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection58"Libtool build/Release-iphoneos/libTiBarcode.a normal armv73a91f8703169b741^ecbf3e713169b741^-159"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC -0#0#0#--1532"Libtool build/Release-iphoneos/libTiBarcode.a normal armv7    cd /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios    setenv IPHONEOS_DEPLOYMENT_TARGET 4.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/pierreexygy/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/ImageMagick/bin:/Users/pierreexygy/.rvm/bin:/usr/local/mysql/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk -L/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos -filelist /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/Objects-normal/armv7/TiBarcode.LinkFileList -ObjC -framework Foundation -framework UIKit -framework AudioToolbox -framework CoreGraphics -framework QuartzCore -framework CoreVideo /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/zxing/iphone/ZXingWidget/build/Release-iphoneos/libZXingWidget.a -o /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/libTiBarcode.a36"EBBA1805-F5E8-4CF2-B81B-841EF1CDF747-
+
+CProcessPCH /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.pth TiBarcode_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s392769903.948338
+e392769904.202057
+r1
+xProcessPCH
+x/var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.pth
+xTiBarcode_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection31"Precompile TiBarcode_Prefix.pch9b04f36f3169b741^39b933703169b741^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/TiBarcode_Prefix.pch0000000000000000^4065"ProcessPCH /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.pth TiBarcode_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/pierreexygy/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/ImageMagick/bin:/Users/pierreexygy/.rvm/bin:/usr/local/mysql/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wformat -Wno-missing-braces -Wno-parentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wno-unused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DTI_VERSION= -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -miphoneos-version-min=4.0 -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-generated-files.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-own-target-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-all-target-headers.hmap -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-project-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/include -Izxing/cpp/core/src -Izxing/iphone/ZXingWidget/Classes -Izxing/iphone/ZXingWidget/Classes/actions -Izxing/iphone/ZXingWidget/Classes/parsedResults -Izxing/iphone/ZXingWidget/Classes/resultParsers "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include" "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include/TiCore" -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources/armv7 -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources -F/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos -DTI_POST_1_2 --serialize-diagnostics /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.dia -c /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/TiBarcode_Prefix.pch -o /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-aritygbhpotmrkcjvdnexyjmmixj/TiBarcode_Prefix.pch.d36"E33079A0-18B1-4571-B981-24618343DF50-
+
+CProcessPCH++ /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.pth TiBarcode_Prefix.pch normal armv7 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
+s392769903.948387
+e392769904.251905
+r1
+xProcessPCH++
+x/var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.pth
+xTiBarcode_Prefix.pch
+xnormal
+xarmv7
+xobjective-c++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection31"Precompile TiBarcode_Prefix.pch8e07f36f3169b741^d97c40703169b741^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/TiBarcode_Prefix.pch0000000000000000^4161"ProcessPCH++ /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.pth TiBarcode_Prefix.pch normal armv7 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/pierreexygy/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/pierreexygy/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/ImageMagick/bin:/Users/pierreexygy/.rvm/bin:/usr/local/mysql/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++-header -arch armv7 -fmessage-length=0 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wno-parentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wno-unused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -DTI_VERSION= -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -g -Wno-sign-conversion -miphoneos-version-min=4.0 -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-generated-files.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-own-target-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-all-target-headers.hmap -iquote /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/TiBarcode-project-headers.hmap -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos/include -Izxing/cpp/core/src -Izxing/iphone/ZXingWidget/Classes -Izxing/iphone/ZXingWidget/Classes/actions -Izxing/iphone/ZXingWidget/Classes/parsedResults -Izxing/iphone/ZXingWidget/Classes/resultParsers "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include" "-I/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.v20130523143543/iphone/include/TiCore" -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources/armv7 -I/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/barcode.build/Release-iphoneos/barcode.build/DerivedSources -F/Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/build/Release-iphoneos -DTI_POST_1_2 --serialize-diagnostics /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.dia -c /Users/pierreexygy/Desktop/titanium_modules-master/barcode/mobile/ios/TiBarcode_Prefix.pch -o /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/j7/gw396w0d5_q3rxg3479nqzl40000gr/C/com.apple.Xcode.504/SharedPrecompiledHeaders/TiBarcode_Prefix-ficnumelqlseozeeawekxoihzaxj/TiBarcode_Prefix.pch.d36"539F3118-6844-4826-8F36-36EDF1B5A1BD-
+

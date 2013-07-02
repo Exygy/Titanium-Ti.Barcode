@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="build/.apt_generated"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Applications/adt-bundle-mac-x86_64-20130522/sdk/platforms/android-8/android.jar"/>
+	<classpathentry kind="lib" path="/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/2.1.5.v20130226113056/android/titanium.jar"/>
+	<classpathentry kind="lib" path="/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/2.1.5.v20130226113056/android/kroll-common.jar"/>
+	<classpathentry kind="lib" path="/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/2.1.5.v20130226113056/android/kroll-apt.jar"/>
+	<classpathentry kind="lib" path="/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/2.1.5.v20130226113056/android/modules/titanium-ui.jar"/>
+	<classpathentry kind="lib" path="/Users/pierreexygy/Library/Application Support/Titanium/mobilesdk/osx/2.1.5.v20130226113056/android/js.jar"/>
+	<classpathentry kind="lib" path="lib/core.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
