@@ -160,18 +160,7 @@ static zxing::DecodeHints decodeHints;
     }
 }
 
--(void)setUseLED:(id)arg
-{
-    led = [TiUtils boolValue:arg def:NO];
 
-    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
-    if (captureDeviceClass != nil) {
-        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        if ([device hasTorch] && [device hasFlash] && controller != nil){
-            [controller setTorch:led];
-        }
-    }
-}
 
 -(id)useLED
 {
