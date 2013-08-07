@@ -27,7 +27,7 @@
 #define HAS_AVFF 1
 #endif
 
-@interface ZXingWidgetController : UIViewController<DecoderDelegate, CancelDelegate, FlashDelegate, UINavigationControllerDelegate
+@interface ZXingWidgetController : UIViewController<DecoderDelegate, CancelDelegate, UINavigationControllerDelegate
 #if HAS_AVFF
 , AVCaptureVideoDataOutputSampleBufferDelegate
 #endif

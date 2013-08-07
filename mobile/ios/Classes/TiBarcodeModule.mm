@@ -220,9 +220,6 @@ static zxing::DecodeHints decodeHints;
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         show_flash = ([device hasTorch] && [device hasFlash]);
     }
-    
-    show_flash = YES;
-	    
 	controller = [[ZXingWidgetController alloc] initWithDelegate:self
 													  showCancel:YES
                                                       showFlash:show_flash

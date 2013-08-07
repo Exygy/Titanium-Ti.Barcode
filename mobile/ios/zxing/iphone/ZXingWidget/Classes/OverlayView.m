@@ -16,6 +16,8 @@
 
 #import "OverlayView.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 static const CGFloat kPadding = 0;
 
 @interface OverlayView()
@@ -27,7 +29,7 @@ static const CGFloat kPadding = 0;
 
 @implementation OverlayView
 
-@synthesize delegate, flash_delegate, oneDMode;
+@synthesize delegate, oneDMode;
 @synthesize points = _points;
 @synthesize cancelButton;
 @synthesize flashButton;
@@ -66,7 +68,7 @@ static const CGFloat kPadding = 0;
             }
             else {
                 CGSize theSize = CGSizeMake(70, 40);
-                CGRect theRect = CGRectMake(5, 25, theSize.width, theSize.height);
+                CGRect theRect = CGRectMake(5, (((self.frame.size.height - rectSize) / 4) - (theSize.height/2)), theSize.width, theSize.height);
                 [cancelButton setFrame:theRect];
             }
             
@@ -80,18 +82,16 @@ static const CGFloat kPadding = 0;
         if (isFlashEnabled) {
             UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom];
             self.flashButton = butt;
+                    
             [flashButton setTitle:@"Turn Flash On" forState:UIControlStateNormal];
+            
             CGSize theSize = CGSizeMake(130, 40);
-            CGRect theRect = CGRectMake((theFrame.size.width - theSize.width), 25, theSize.width, theSize.height);
+            CGRect theRect = CGRectMake((theFrame.size.width - theSize.width), (((self.frame.size.height - rectSize) / 4) - (theSize.height/2)), theSize.width, theSize.height);
             [flashButton setFrame:theRect];
             [flashButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             
             [flashButton addTarget:self action:@selector(switchFlash:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:flashButton];
-        }
-        
-        if (overlay != nil) {
-            [self addSubview:overlay];
         }
     }
     return self;
@@ -106,16 +106,54 @@ static const CGFloat kPadding = 0;
 
 - (void)switchFlash:(id)sender {
     if([flashButton.titleLabel.text isEqualToString:@"Turn Flash On"]){
-        flashButton.titleLabel.text = @"Turn Flash Off";
+        [flashButton setTitle:@"Turn Flash Off" forState:UIControlStateNormal];
     }else{
-        flashButton.titleLabel.text = @"Turn Flash On";
+        [flashButton setTitle:@"Turn Flash On" forState:UIControlStateNormal];
     }
-    
-	// call delegate to switch flash on or off
-	if (flash_delegate != nil) {
-		[flash_delegate switchFlash];
-	}
+    [self setTorch:![self torchIsOn]];
 }
+
+#pragma mark - Torch
+
+- (void)setTorch:(BOOL)status {
+    // Is this call redundant? Than ignore it...
+//    if (status == [self torchIsOn]) {
+//        return;
+//    }
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+        
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        
+        [device lockForConfiguration:nil];
+        if ( [device hasTorch] ) {
+            if ( status ) {
+                [device setTorchMode:AVCaptureTorchModeOn];
+                [device setFlashMode:AVCaptureFlashModeOn];
+            } else {
+                [device setTorchMode:AVCaptureTorchModeOff];
+                [device setFlashMode:AVCaptureFlashModeOff];
+            }
+        }
+        [device unlockForConfiguration];
+    }
+}
+
+- (BOOL)torchIsOn {
+
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+                
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        
+        if ( [device hasTorch] ) {
+            return [device torchMode] == AVCaptureTorchModeOn;
+        }
+        [device unlockForConfiguration];
+    }
+    return NO;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {

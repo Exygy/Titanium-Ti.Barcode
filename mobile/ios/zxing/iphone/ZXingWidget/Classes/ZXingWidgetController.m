@@ -110,10 +110,6 @@
     }
 }
 
-- (void)switchFlash {
-    [self setTorch:![self torchIsOn]];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

@@ -17,7 +17,6 @@
 #import <UIKit/UIKit.h>
 
 @protocol CancelDelegate;
-@protocol FlashDelegate;
 
 @interface OverlayView : UIView {
 	UIImageView *imageView;
@@ -26,7 +25,6 @@
 	UIButton *flashButton;
     UILabel *instructionsLabel;
 	id<CancelDelegate> delegate;
-    id<FlashDelegate> flash_delegate;
 	BOOL oneDMode;
     CGRect cropRect;
     NSString *displayedMessage;
@@ -35,7 +33,6 @@
 
 @property (nonatomic, retain) NSMutableArray*  points;
 @property (nonatomic, assign) id<CancelDelegate> delegate;
-@property (nonatomic, assign) id<FlashDelegate> flash_delegate;
 @property (nonatomic, assign) BOOL oneDMode;
 @property (nonatomic, assign) CGRect cropRect;
 @property (nonatomic, copy) NSString *displayedMessage;
@@ -48,13 +45,11 @@
         withOverlay:(UIView*)overlay;
 
 - (void)setPoint:(CGPoint)point;
+- (void)setTorch:(BOOL)status;
+- (BOOL)torchIsOn;
 
 @end
 
 @protocol CancelDelegate
 - (void)cancelled;
-@end
-
-@protocol FlashDelegate
-- (void)switchFlash;
 @end
