@@ -16,19 +16,21 @@
 
 #import "OverlayView.h"
 
-static const CGFloat kPadding = 10;
+static const CGFloat kPadding = 0;
 
 @interface OverlayView()
 @property (nonatomic,assign) UIButton *cancelButton;
+@property (nonatomic,assign) UIButton *flashButton;
 @property (nonatomic,retain) UILabel *instructionsLabel;
 @end
 
 
 @implementation OverlayView
 
-@synthesize delegate, oneDMode;
+@synthesize delegate, flash_delegate, oneDMode;
 @synthesize points = _points;
 @synthesize cancelButton;
+@synthesize flashButton;
 @synthesize cropRect;
 @synthesize instructionsLabel;
 @synthesize displayedMessage;
@@ -36,6 +38,7 @@ static const CGFloat kPadding = 10;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) initWithFrame:(CGRect)theFrame
        cancelEnabled:(BOOL)isCancelEnabled
+        flashEnabled:(BOOL)isFlashEnabled
     rectangleEnabled:(BOOL)isRectangleEnabled
             oneDMode:(BOOL)isOneDModeEnabled
          withOverlay:(UIView*)overlay {
@@ -53,7 +56,7 @@ static const CGFloat kPadding = 10;
         self.backgroundColor = [UIColor clearColor];
         self.oneDMode = isOneDModeEnabled;
         if (isCancelEnabled) {
-            UIButton *butt = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+            UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom]; 
             self.cancelButton = butt;
             [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
             if (oneDMode) {
@@ -62,15 +65,29 @@ static const CGFloat kPadding = 10;
                 [cancelButton setFrame:CGRectMake(20, 175, 45, 130)];
             }
             else {
-                CGSize theSize = CGSizeMake(100, 50);
-                CGRect theRect = CGRectMake((theFrame.size.width - theSize.width) / 2, cropRect.origin.y + cropRect.size.height + 20, theSize.width, theSize.height);
+                CGSize theSize = CGSizeMake(70, 40);
+                CGRect theRect = CGRectMake(5, 25, theSize.width, theSize.height);
                 [cancelButton setFrame:theRect];
-                
             }
+            
+            [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             
             [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:cancelButton];
             [self addSubview:imageView];
+        }
+        
+        if (isFlashEnabled) {
+            UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.flashButton = butt;
+            [flashButton setTitle:@"Turn Flash On" forState:UIControlStateNormal];
+            CGSize theSize = CGSizeMake(130, 40);
+            CGRect theRect = CGRectMake((theFrame.size.width - theSize.width), 25, theSize.width, theSize.height);
+            [flashButton setFrame:theRect];
+            [flashButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            [flashButton addTarget:self action:@selector(switchFlash:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:flashButton];
         }
         
         if (overlay != nil) {
@@ -84,6 +101,19 @@ static const CGFloat kPadding = 10;
 	// call delegate to cancel this scanner
 	if (delegate != nil) {
 		[delegate cancelled];
+	}
+}
+
+- (void)switchFlash:(id)sender {
+    if([flashButton.titleLabel.text isEqualToString:@"Turn Flash On"]){
+        flashButton.titleLabel.text = @"Turn Flash Off";
+    }else{
+        flashButton.titleLabel.text = @"Turn Flash On";
+    }
+    
+	// call delegate to switch flash on or off
+	if (flash_delegate != nil) {
+		[flash_delegate switchFlash];
 	}
 }
 
@@ -102,9 +132,15 @@ static const CGFloat kPadding = 10;
         CGContextBeginPath(context);
         CGContextMoveToPoint(context, rect.origin.x, rect.origin.y);
         CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y);
-        CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
+        
+        
+        //CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
+        CGContextMoveToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
+        
         CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y + rect.size.height);
-        CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y);
+        
+        //CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y);
+        
         CGContextStrokePath(context);
     }
 }
@@ -145,7 +181,7 @@ static const CGFloat kPadding = 10;
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
     if (displayedMessage == nil) {
-        self.displayedMessage = @"Place a barcode inside the viewfinder rectangle to scan it.";
+        self.displayedMessage = @"Place a barcode inside the viewfinder to scan it.";
     }
 	CGContextRef c = UIGraphicsGetCurrentContext();
     
@@ -172,9 +208,9 @@ static const CGFloat kPadding = 10;
         }
         else {
             UIFont *font = [UIFont systemFontOfSize:18];
-            CGSize constraint = CGSizeMake(rect.size.width  - 2 * kTextMargin, cropRect.origin.y);
+            CGSize constraint = CGSizeMake(rect.size.width, cropRect.origin.y);
             CGSize displaySize = [self.displayedMessage sizeWithFont:font constrainedToSize:constraint];
-            CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , cropRect.origin.y - displaySize.height, displaySize.width, displaySize.height);
+            CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , (cropRect.origin.y + cropRect.size.height + 20), displaySize.width, displaySize.height);
             [self.displayedMessage drawInRect:displayRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
         }
         CGContextRestoreGState(c);
@@ -202,7 +238,7 @@ static const CGFloat kPadding = 10;
             CGContextStrokePath(c);
         }
         else {
-            CGRect smallSquare = CGRectMake(0, 0, 10, 10);
+            CGRect smallSquare = CGRectMake(0, 0, 0, 0);
             for( NSValue* value in _points ) {
                 CGPoint point = [self map:[value CGPointValue]];
                 smallSquare.origin = CGPointMake(

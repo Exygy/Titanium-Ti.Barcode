@@ -55,6 +55,7 @@
 
 - (id)initWithDelegate:(id<ZXingDelegate>)scanDelegate
             showCancel:(BOOL)shouldShowCancel
+             showFlash:(BOOL)shouldShowFlash
          showRectangle:(BOOL)shouldShowRectangle
               keepOpen:(BOOL)shouldKeepOpen
         useFrontCamera:(BOOL)shouldUseFrontCamera
@@ -71,6 +72,7 @@
         self.useFrontCamera = shouldUseFrontCamera;
         OverlayView *theOverlayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds 
                                                            cancelEnabled:shouldShowCancel
+                                                            flashEnabled:shouldShowFlash
                                                         rectangleEnabled:shouldShowRectangle
                                                                 oneDMode:oneDMode
                                                              withOverlay:overlay];
@@ -108,6 +110,9 @@
     }
 }
 
+- (void)switchFlash {
+    [self setTorch:![self torchIsOn]];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

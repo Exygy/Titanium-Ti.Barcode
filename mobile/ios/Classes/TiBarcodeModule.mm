@@ -116,7 +116,7 @@ static zxing::DecodeHints decodeHints;
         [self forgetSelf];
 		controller.delegate = nil;
 		// [MOD-232] Animation controlled by caller
-		[controller dismissViewControllerAnimated:YES completion:nil];
+		[controller dismissViewControllerAnimated:NO completion:nil];
 	}
 	RELEASE_TO_NIL(controller);
 }
@@ -207,40 +207,32 @@ static zxing::DecodeHints decodeHints;
 	BOOL tryHarder = [TiUtils boolValue:[self valueForUndefinedKey:@"allowRotation"] def:NO];
     id acceptedFormats = [args valueForKey:@"acceptedFormats"];
     
-	// [MOD-232] Allow caller to determine if they want to animate
-	animate = [TiUtils boolValue:[args objectForKey:@"animate"] def:YES];
-	
-	if (controller!=nil)
-	{
+	if (controller!=nil){
         NSMutableDictionary *event = [NSMutableDictionary dictionary];
         [event setObject:@"device busy" forKey:@"message"];
         [self fireEvent:@"error" withObject:event];
 		return;
 	}
-	
-    keepOpen = [TiUtils boolValue:@"keepOpen" properties:args def:NO];
     
-    // allow an overlay view
-    UIView *overlayView = nil;
-    TiViewProxy *overlayProxy = [args objectForKey:@"overlay"];
-    if (overlayProxy != nil)
-    {
-        ENSURE_TYPE(overlayProxy, TiViewProxy);
-        overlayView = [overlayProxy view];
-        
-        //[overlayProxy layoutChildren:NO];
-        [TiUtils setView:overlayView positionRect:[UIScreen mainScreen].bounds];
+    BOOL show_flash = NO;
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        show_flash = ([device hasTorch] && [device hasFlash]);
     }
     
+    show_flash = YES;
+	    
 	controller = [[ZXingWidgetController alloc] initWithDelegate:self
-													  showCancel:[TiUtils boolValue:@"showCancel" properties:args def:YES]
-                                                   showRectangle:[TiUtils boolValue:@"showRectangle" properties:args def:YES]
-                                                        keepOpen:keepOpen
-                                                  useFrontCamera:useFrontCamera
+													  showCancel:YES
+                                                      showFlash:show_flash
+                                                   showRectangle:YES
+                                                        keepOpen:NO
+                                                  useFrontCamera:NO
                                                         OneDMode:NO
-                                                     withOverlay:overlayView];
+                                                     withOverlay:nil];
     
-    [controller setTorch:led];
+    //[controller setTorch:led];
 	
 	// Use our custom multi-format reader so that we get all of the formats and
 	// we can control the 'TryHarder' flag for rotation support
@@ -249,11 +241,6 @@ static zxing::DecodeHints decodeHints;
     if (acceptedFormats != nil) {
         ENSURE_ARRAY(acceptedFormats);
         [multiFormatReader setAcceptedFormats:acceptedFormats];
-    }
-    
-	NSString* displayedMessage = [TiUtils stringValue:[self valueForUndefinedKey:@"displayedMessage"]];
-	if (displayedMessage != nil) {
-	    controller.overlayView.displayedMessage = displayedMessage;
     }
 	
 	NSSet *readers = [[NSSet alloc] initWithObjects:
@@ -264,17 +251,7 @@ static zxing::DecodeHints decodeHints;
 	
 	controller.readers = readers;
 	[readers release];
-    
-	id sound = [args objectForKey:@"soundURL"];
-	if (sound!=nil)
-	{
-		NSURL *soundURL = [TiUtils toURL:sound proxy:self];
-		if (soundURL!=nil)
-		{
-			[controller setSoundToPlay:soundURL];
-		}
-	}
-	
+    	
 	[[TiApp app] showModalController:controller animated:YES];
 }
 

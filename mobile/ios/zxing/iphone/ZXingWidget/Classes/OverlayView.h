@@ -17,13 +17,16 @@
 #import <UIKit/UIKit.h>
 
 @protocol CancelDelegate;
+@protocol FlashDelegate;
 
 @interface OverlayView : UIView {
 	UIImageView *imageView;
 	NSMutableArray *_points;
 	UIButton *cancelButton;
+	UIButton *flashButton;
     UILabel *instructionsLabel;
 	id<CancelDelegate> delegate;
+    id<FlashDelegate> flash_delegate;
 	BOOL oneDMode;
     CGRect cropRect;
     NSString *displayedMessage;
@@ -32,12 +35,14 @@
 
 @property (nonatomic, retain) NSMutableArray*  points;
 @property (nonatomic, assign) id<CancelDelegate> delegate;
+@property (nonatomic, assign) id<FlashDelegate> flash_delegate;
 @property (nonatomic, assign) BOOL oneDMode;
 @property (nonatomic, assign) CGRect cropRect;
 @property (nonatomic, copy) NSString *displayedMessage;
 
 - (id)initWithFrame:(CGRect)theFrame
       cancelEnabled:(BOOL)isCancelEnabled
+       flashEnabled:(BOOL)isFlashEnabled
    rectangleEnabled:(BOOL)isRectangleEnabled
            oneDMode:(BOOL)isOneDModeEnabled
         withOverlay:(UIView*)overlay;
@@ -48,4 +53,8 @@
 
 @protocol CancelDelegate
 - (void)cancelled;
+@end
+
+@protocol FlashDelegate
+- (void)switchFlash;
 @end
