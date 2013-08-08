@@ -18,7 +18,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-static const CGFloat kPadding = 0;
+static const CGFloat kPadding = 10;
 
 @interface OverlayView()
 @property (nonatomic,assign) UIButton *cancelButton;
@@ -48,32 +48,21 @@ static const CGFloat kPadding = 0;
     if( self ) {
         rectangleEnabled = isRectangleEnabled;
         CGFloat rectSize = self.frame.size.width - kPadding * 2;
-        if (!oneDMode) {
-            cropRect = CGRectMake(kPadding, (self.frame.size.height - rectSize) / 2, rectSize, rectSize);
-        } else {
-            CGFloat rectSize2 = self.frame.size.height - kPadding * 2;
-            cropRect = CGRectMake(kPadding, kPadding, rectSize, rectSize2);		
-        }
+        int rectMargin = 60;
+        cropRect = CGRectMake(kPadding+(rectMargin/2), (self.frame.size.height - rectSize) / 2, rectSize-rectMargin, rectSize);
         
         self.backgroundColor = [UIColor clearColor];
         self.oneDMode = isOneDModeEnabled;
         if (isCancelEnabled) {
             UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom]; 
             self.cancelButton = butt;
-            [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-            if (oneDMode) {
-                [cancelButton setTransform:CGAffineTransformMakeRotation(M_PI/2)];
-                
-                [cancelButton setFrame:CGRectMake(20, 175, 45, 130)];
-            }
-            else {
-                CGSize theSize = CGSizeMake(70, 40);
-                CGRect theRect = CGRectMake(5, (((self.frame.size.height - rectSize) / 4) - (theSize.height/2)), theSize.width, theSize.height);
-                [cancelButton setFrame:theRect];
-            }
-            
+            [cancelButton setTitle:@"" forState:UIControlStateNormal];
+            CGSize theSize = CGSizeMake(32, 34);
+            CGRect theRect = CGRectMake((theFrame.size.width - theSize.width)-10, 10, theSize.width, theSize.height);
+            [cancelButton setFrame:theRect];
             [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
+            [cancelButton setBackgroundImage:[UIImage imageNamed:@"/images/camera_close.png"] forState:UIControlStateNormal];
+            cancelButton.transform = CGAffineTransformMakeRotation(90.0*M_PI/180.0);
             [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:cancelButton];
             [self addSubview:imageView];
@@ -82,17 +71,33 @@ static const CGFloat kPadding = 0;
         if (isFlashEnabled) {
             UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom];
             self.flashButton = butt;
-                    
-            [flashButton setTitle:@"Turn Flash On" forState:UIControlStateNormal];
-            
-            CGSize theSize = CGSizeMake(130, 40);
-            CGRect theRect = CGRectMake((theFrame.size.width - theSize.width), (((self.frame.size.height - rectSize) / 4) - (theSize.height/2)), theSize.width, theSize.height);
+            flashButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            flashButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [flashButton setTitle: @"" forState: UIControlStateNormal];
+            CGSize theSize = CGSizeMake(34, 35);
+            CGRect theRect = CGRectMake((theFrame.size.width-theSize.width-10), (theFrame.size.height-theSize.height-10), theSize.width, theSize.height);
             [flashButton setFrame:theRect];
             [flashButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
+            [flashButton setBackgroundImage:[UIImage imageNamed:@"/images/camera_flash.png"] forState:UIControlStateNormal];
+            flashButton.transform = CGAffineTransformMakeRotation(90.0*M_PI/180.0);            
             [flashButton addTarget:self action:@selector(switchFlash:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:flashButton];
         }
+        
+        // add Label
+        CGSize theSize = CGSizeMake(380, 15);
+        CGRect theRect = CGRectMake(-(theSize.width/2)-(theSize.height/2)+(rectMargin/2), ((self.frame.size.height - theSize.height) / 2), theSize.width, theSize.height);
+        UILabel *label = [[UILabel alloc] initWithFrame:theRect];
+        label.numberOfLines=0;
+        label.lineBreakMode=UILineBreakModeCharacterWrap;
+        [label setText:@"Place a barcode inside the viewfinder to scan it."];
+        [label setTextColor:[UIColor whiteColor]];
+        [label setBackgroundColor:[UIColor clearColor]];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        label.transform = CGAffineTransformMakeRotation(90.0*M_PI/180.0);
+        self.instructionsLabel = label;
+        [self addSubview:label];
+        [label release];        
     }
     return self;
 }
@@ -104,27 +109,20 @@ static const CGFloat kPadding = 0;
 	}
 }
 
+#pragma mark - Torch
+
 - (void)switchFlash:(id)sender {
-    if([flashButton.titleLabel.text isEqualToString:@"Turn Flash On"]){
-        [flashButton setTitle:@"Turn Flash Off" forState:UIControlStateNormal];
-    }else{
-        [flashButton setTitle:@"Turn Flash On" forState:UIControlStateNormal];
-    }
     [self setTorch:![self torchIsOn]];
 }
 
-#pragma mark - Torch
-
 - (void)setTorch:(BOOL)status {
     // Is this call redundant? Than ignore it...
-//    if (status == [self torchIsOn]) {
-//        return;
-//    }
+    if (status == [self torchIsOn]) {
+        return;
+    }
     Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
     if (captureDeviceClass != nil) {
-        
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        
         [device lockForConfiguration:nil];
         if ( [device hasTorch] ) {
             if ( status ) {
@@ -140,12 +138,9 @@ static const CGFloat kPadding = 0;
 }
 
 - (BOOL)torchIsOn {
-
     Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
     if (captureDeviceClass != nil) {
-                
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        
         if ( [device hasTorch] ) {
             return [device torchMode] == AVCaptureTorchModeOn;
         }
@@ -155,7 +150,8 @@ static const CGFloat kPadding = 0;
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Memory
+
 - (void) dealloc {
 	[imageView release];
 	[_points release];
@@ -170,155 +166,39 @@ static const CGFloat kPadding = 0;
         CGContextBeginPath(context);
         CGContextMoveToPoint(context, rect.origin.x, rect.origin.y);
         CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y);
-        
-        
-        //CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
-        CGContextMoveToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
-        
+        CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height);
         CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y + rect.size.height);
+        CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y);        
+        CGContextStrokePath(context);
         
-        //CGContextAddLineToPoint(context, rect.origin.x, rect.origin.y);
-        
+        int offset = rect.size.width / 2;
+        CGFloat red[4] = {1.0f, 0.0f, 0.0f, 1.0f};
+        CGContextSetStrokeColor(context, red);
+        CGContextSetFillColor(context, red);
+        CGContextBeginPath(context);
+        CGContextMoveToPoint(context, rect.origin.x + offset, rect.origin.y + kPadding);
+        CGContextAddLineToPoint(context, rect.origin.x + offset, rect.origin.y + rect.size.height - kPadding);
         CGContextStrokePath(context);
     }
 }
 
-- (CGPoint)map:(CGPoint)point {
-    CGPoint center;
-    center.x = cropRect.size.width/2;
-    center.y = cropRect.size.height/2;
-    float x = point.x - center.x;
-    float y = point.y - center.y;
-    int rotation = 90;
-    switch(rotation) {
-        case 0:
-            point.x = x;
-            point.y = y;
-            break;
-        case 90:
-            point.x = -y;
-            point.y = x;
-            break;
-        case 180:
-            point.x = -x;
-            point.y = -y;
-            break;
-        case 270:
-            point.x = y;
-            point.y = -x;
-            break;
-    }
-    point.x = point.x + center.x;
-    point.y = point.y + center.y;
-    return point;
-}
-
 #define kTextMargin 10
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-    if (displayedMessage == nil) {
-        self.displayedMessage = @"Place a barcode inside the viewfinder to scan it.";
-    }
-	CGContextRef c = UIGraphicsGetCurrentContext();
-    
-	if (_points != nil) {
-        //		[imageView.image drawAtPoint:cropRect.origin];
-	}
-	
-    int offset = rect.size.width / 2;
+	CGContextRef c = UIGraphicsGetCurrentContext();    
     if (rectangleEnabled) {
         CGFloat white[4] = {1.0f, 1.0f, 1.0f, 1.0f};
         CGContextSetStrokeColor(c, white);
         CGContextSetFillColor(c, white);
         [self drawRect:cropRect inContext:c];
-        
-        //	CGContextSetStrokeColor(c, white);
-        //	CGContextSetStrokeColor(c, white);
-        CGContextSaveGState(c);
-        if (oneDMode) {
-            char *text = "Place a red line over the bar code to be scanned.";
-            CGContextSelectFont(c, "Helvetica", 15, kCGEncodingMacRoman);
-            CGContextScaleCTM(c, -1.0, 1.0);
-            CGContextRotateCTM(c, M_PI/2);
-            CGContextShowTextAtPoint(c, 74.0, 285.0, text, 49);
-        }
-        else {
-            UIFont *font = [UIFont systemFontOfSize:18];
-            CGSize constraint = CGSizeMake(rect.size.width, cropRect.origin.y);
-            CGSize displaySize = [self.displayedMessage sizeWithFont:font constrainedToSize:constraint];
-            CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , (cropRect.origin.y + cropRect.size.height + 20), displaySize.width, displaySize.height);
-            [self.displayedMessage drawInRect:displayRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
-        }
-        CGContextRestoreGState(c);
-        if (oneDMode) {
-            CGFloat red[4] = {1.0f, 0.0f, 0.0f, 1.0f};
-            CGContextSetStrokeColor(c, red);
-            CGContextSetFillColor(c, red);
-            CGContextBeginPath(c);
-            //		CGContextMoveToPoint(c, rect.origin.x + kPadding, rect.origin.y + offset);
-            //		CGContextAddLineToPoint(c, rect.origin.x + rect.size.width - kPadding, rect.origin.y + offset);
-            CGContextMoveToPoint(c, rect.origin.x + offset, rect.origin.y + kPadding);
-            CGContextAddLineToPoint(c, rect.origin.x + offset, rect.origin.y + rect.size.height - kPadding);
-            CGContextStrokePath(c);
-        }
-    }
-    if (_points != nil) {
-        CGFloat blue[4] = {0.0f, 1.0f, 0.0f, 1.0f};
-        CGContextSetStrokeColor(c, blue);
-        CGContextSetFillColor(c, blue);
-        if (oneDMode) {
-            CGPoint val1 = [self map:[[_points objectAtIndex:0] CGPointValue]];
-            CGPoint val2 = [self map:[[_points objectAtIndex:1] CGPointValue]];
-            CGContextMoveToPoint(c, offset, val1.x);
-            CGContextAddLineToPoint(c, offset, val2.x);
-            CGContextStrokePath(c);
-        }
-        else {
-            CGRect smallSquare = CGRectMake(0, 0, 0, 0);
-            for( NSValue* value in _points ) {
-                CGPoint point = [self map:[value CGPointValue]];
-                smallSquare.origin = CGPointMake(
-                                                 cropRect.origin.x + point.x - smallSquare.size.width / 2,
-                                                 cropRect.origin.y + point.y - smallSquare.size.height / 2);
-                [self drawRect:smallSquare inContext:c];
-            }
-        }
     }
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
- - (void) setImage:(UIImage*)image {
- //if( nil == imageView ) {
- // imageView = [[UIImageView alloc] initWithImage:image];
- // imageView.alpha = 0.5;
- // } else {
- imageView.image = image;
- //}
- 
- //CGRect frame = imageView.frame;
- //frame.origin.x = self.cropRect.origin.x;
- //frame.origin.y = self.cropRect.origin.y;
- //imageView.frame = CGRectMake(0,0, 30, 50);
- 
- //[_points release];
- //_points = nil;
- //self.backgroundColor = [UIColor clearColor];
- 
- //[self setNeedsDisplay];
- }
- */
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIImage*) image {
 	return imageView.image;
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) setPoints:(NSMutableArray*)pnts {
     [pnts retain];
     [_points release];

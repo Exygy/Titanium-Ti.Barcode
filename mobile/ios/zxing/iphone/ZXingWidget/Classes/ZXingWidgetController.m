@@ -155,7 +155,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
     decoding = YES;
     
     [self initCapture];
@@ -165,9 +166,13 @@
     else {
         [self.view addSubview:overlayView];        
     }
-    
     [overlayView setPoints:nil];
     wasCancelled = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

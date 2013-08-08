@@ -47,8 +47,10 @@ unsigned char* GreyscaleRotatedLuminanceSource::getRow(int y, unsigned char* row
   }
   int offset = (left_ * dataWidth_) + (dataWidth_ - (y + top_));
   for (int x = 0; x < width; x++) {
-    row[x] = greyData_[offset];
-    offset += dataWidth_;
+    if((int)sizeof(greyData_) > offset){
+      row[x] = greyData_[offset];
+      offset += dataWidth_;
+    }
   }
   return row;
 }
