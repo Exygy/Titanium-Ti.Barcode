@@ -111,11 +111,20 @@ static zxing::DecodeHints decodeHints;
 
 -(void)_cleanup
 {
-	if (controller!=nil)
+
+	if (upc_controller!=nil)
+	{
+        [self forgetSelf];
+		upc_controller.delegate = nil;
+		[upc_controller dismissViewControllerAnimated:NO completion:nil];
+	}
+	RELEASE_TO_NIL(upc_controller);
+	
+    
+    if (controller!=nil)
 	{
         [self forgetSelf];
 		controller.delegate = nil;
-		// [MOD-232] Animation controlled by caller
 		[controller dismissViewControllerAnimated:NO completion:nil];
 	}
 	RELEASE_TO_NIL(controller);
@@ -214,42 +223,72 @@ static zxing::DecodeHints decodeHints;
 		return;
 	}
     
+    //figure out if flash is available
     BOOL show_flash = NO;
     Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
     if (captureDeviceClass != nil) {
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         show_flash = ([device hasTorch] && [device hasFlash]);
     }
-	controller = [[ZXingWidgetController alloc] initWithDelegate:self
-													  showCancel:YES
-                                                      showFlash:show_flash
-                                                   showRectangle:YES
-                                                        keepOpen:NO
-                                                  useFrontCamera:NO
-                                                        OneDMode:NO
-                                                     withOverlay:nil];
     
-    //[controller setTorch:led];
-	
-	// Use our custom multi-format reader so that we get all of the formats and
-	// we can control the 'TryHarder' flag for rotation support
-	CustomMultiFormatReader* multiFormatReader = [[CustomMultiFormatReader alloc] init];
-	[multiFormatReader setTryHarder:tryHarder];
-    if (acceptedFormats != nil) {
-        ENSURE_ARRAY(acceptedFormats);
-        [multiFormatReader setAcceptedFormats:acceptedFormats];
+    NSString *version = [[UIDevice currentDevice] systemVersion];
+    BOOL isAtLeast7 = [version hasPrefix:@"7."];
+    
+    
+    NSLog(@"Plugin starting");
+    
+
+    
+    if(isAtLeast7){
+    
+        NSLog(@"isAtLeast7");
+        
+        // USE iOs7 Built-in Barcode Scanner
+        upc_controller = [[UPCScannerController alloc] initWithDelegate:self
+                                                             showCancel:YES
+                                                              showFlash:show_flash];
+
+        
+        [[TiApp app] showModalController:upc_controller animated:YES];
+        NSLog(@"Should be showing modal upc_controller");
+    }else{
+
+        NSLog(@"isNot7");
+
+        
+        // USE ZXingWidgetController == XZing barcode scanner
+        controller = [[ZXingWidgetController alloc] initWithDelegate:self
+                                                          showCancel:YES
+                                                           showFlash:show_flash
+                                                       showRectangle:YES
+                                                            keepOpen:NO
+                                                      useFrontCamera:NO
+                                                            OneDMode:NO
+                                                         withOverlay:nil];
+        
+        //[controller setTorch:led];
+        
+        // Use our custom multi-format reader so that we get all of the formats and
+        // we can control the 'TryHarder' flag for rotation support
+        CustomMultiFormatReader* multiFormatReader = [[CustomMultiFormatReader alloc] init];
+        [multiFormatReader setTryHarder:tryHarder];
+        if (acceptedFormats != nil) {
+            ENSURE_ARRAY(acceptedFormats);
+            [multiFormatReader setAcceptedFormats:acceptedFormats];
+        }
+        
+        NSSet *readers = [[NSSet alloc] initWithObjects:
+                          multiFormatReader,
+                          nil];
+        
+        [multiFormatReader release];
+        
+        controller.readers = readers;
+        [readers release];
+    
+        [[TiApp app] showModalController:controller animated:YES];
     }
 	
-	NSSet *readers = [[NSSet alloc] initWithObjects:
-					  multiFormatReader,
-					  nil];
-	
-	[multiFormatReader release];
-	
-	controller.readers = readers;
-	[readers release];
-    	
-	[[TiApp app] showModalController:controller animated:YES];
 }
 
 -(void)cancel:(id)args
@@ -556,6 +595,25 @@ MAKE_SYSTEM_PROP(FORMAT_ITF,zxing::BarcodeFormat_ITF);
     @catch (NSException * e) {
         [self fireEvent:@"error" withObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:[e reason], @"message", nil]];
     }
+}
+
+#pragma mark UPCScanner Delegate
+
+- (void)UPCScannerController:(UPCScannerController*)controller_ didScanResult:(NSString *)result
+{
+	[self handleSuccessResult:result];
+    if (!keepOpen) {
+        [self _cleanup];
+    }
+}
+
+- (void)UPCScannerControllerDidCancel:(UPCScannerController*)controller_
+{
+    
+    NSLog(@"cancel!!!");
+    
+    [self fireEvent:@"cancel" withObject:[NSMutableDictionary dictionary]];
+	[self _cleanup];
 }
 
 #pragma mark ZXing Delegate

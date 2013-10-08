@@ -6,12 +6,14 @@
 
 #import "TiModule.h"
 #import "ZXingWidgetController.h"
+#import "UPCScannerController.h"
 #import "DecoderDelegate.h"
 #import "TwoDDecoderResult.h"
 
-@interface TiBarcodeModule : TiModule<ZXingDelegate, DecoderDelegate> 
+@interface TiBarcodeModule : TiModule<ZXingDelegate, DecoderDelegate, UPCScannerDelegate>
 {
 	ZXingWidgetController *controller;
+	UPCScannerController *upc_controller;
 	BOOL animate;
     BOOL keepOpen;
     BOOL useFrontCamera;

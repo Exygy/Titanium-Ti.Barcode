@@ -19,7 +19,7 @@
 #import <AVFoundation/AVFoundation.h>
 #include "Decoder.h"
 #include "parsedResults/ParsedResult.h"
-#include "OverlayView.h"
+#import "OverlayView.h"
 
 @protocol ZXingDelegate;
 

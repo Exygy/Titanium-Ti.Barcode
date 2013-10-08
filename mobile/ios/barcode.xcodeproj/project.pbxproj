@@ -26,6 +26,9 @@
 		24DD6CF91134B3F500162E58 /* TiBarcodeModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* TiBarcodeModule.h */; };
 		24DE9E1111C5FE74003F90F6 /* TiBarcodeModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* TiBarcodeModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* TiBarcodeModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* TiBarcodeModuleAssets.m */; };
+		8EB8880317F915D9000B131D /* UPCScannerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB8880117F915D9000B131D /* UPCScannerController.h */; };
+		8EB8880417F915D9000B131D /* UPCScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8880217F915D9000B131D /* UPCScannerController.m */; };
+		8EB8880617F916F0000B131D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB8880517F916F0000B131D /* AVFoundation.framework */; };
 		A288D4FB1378B0F400FB90D4 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A288D4FA1378B0D200FB90D4 /* libZXingWidget.a */; };
 		AA747D9F0F9514B9006C5449 /* TiBarcode_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiBarcode_Prefix.pch */; };
 		DA9F79ED1231D71200D62DB8 /* TiBarcodeModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA9F79EC1231D71200D62DB8 /* TiBarcodeModule.mm */; };
@@ -66,6 +69,9 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* TiBarcodeModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiBarcodeModuleAssets.h; path = Classes/TiBarcodeModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* TiBarcodeModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiBarcodeModuleAssets.m; path = Classes/TiBarcodeModuleAssets.m; sourceTree = "<group>"; };
+		8EB8880117F915D9000B131D /* UPCScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UPCScannerController.h; path = Classes/UPCScannerController.h; sourceTree = "<group>"; };
+		8EB8880217F915D9000B131D /* UPCScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UPCScannerController.m; path = Classes/UPCScannerController.m; sourceTree = "<group>"; };
+		8EB8880517F916F0000B131D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A288D4F01378B0D200FB90D4 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = zxing/iphone/ZXingWidget/ZXingWidget.xcodeproj; sourceTree = SOURCE_ROOT; };
 		AA747D9E0F9514B9006C5449 /* TiBarcode_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiBarcode_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		D2AAC07E0554694100DB518D /* libTiBarcode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiBarcode.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB8880617F916F0000B131D /* AVFoundation.framework in Frameworks */,
 				246732D911E27BC500D39AF7 /* Foundation.framework in Frameworks */,
 				DAF8E7AF1300AF8B00C06BC6 /* UIKit.framework in Frameworks */,
 				DAF8E7B21300AF9400C06BC6 /* AudioToolbox.framework in Frameworks */,
@@ -118,6 +125,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EB8880517F916F0000B131D /* AVFoundation.framework */,
 				246732D811E27BC500D39AF7 /* Foundation.framework */,
 				DAF8E7AE1300AF8B00C06BC6 /* UIKit.framework */,
 				DAF8E7B11300AF9400C06BC6 /* AudioToolbox.framework */,
@@ -135,6 +143,8 @@
 				DA9F79EC1231D71200D62DB8 /* TiBarcodeModule.mm */,
 				24DE9E0F11C5FE74003F90F6 /* TiBarcodeModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* TiBarcodeModuleAssets.m */,
+				8EB8880117F915D9000B131D /* UPCScannerController.h */,
+				8EB8880217F915D9000B131D /* UPCScannerController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -172,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* TiBarcode_Prefix.pch in Headers */,
+				8EB8880317F915D9000B131D /* UPCScannerController.h in Headers */,
 				24DD6CF91134B3F500162E58 /* TiBarcodeModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* TiBarcodeModuleAssets.h in Headers */,
 			);
@@ -203,6 +214,8 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "barcode" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -258,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB8880417F915D9000B131D /* UPCScannerController.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* TiBarcodeModuleAssets.m in Sources */,
 				DA9F79ED1231D71200D62DB8 /* TiBarcodeModule.mm in Sources */,
 			);
