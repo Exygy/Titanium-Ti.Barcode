@@ -27,7 +27,7 @@
 #define HAS_AVFF 1
 #endif
 
-@interface ZXingWidgetController : UIViewController<DecoderDelegate, CancelDelegate, UINavigationControllerDelegate
+@interface ZXingWidgetController : UIViewController<DecoderDelegate, CancelDelegate, HelpDelegate, UINavigationControllerDelegate
 #if HAS_AVFF
 , AVCaptureVideoDataOutputSampleBufferDelegate
 #endif
@@ -64,6 +64,7 @@
 - (id)initWithDelegate:(id<ZXingDelegate>)delegate
             showCancel:(BOOL)shouldShowCancel
              showFlash:(BOOL)shouldShowFlash
+              showHelp:(BOOL)shouldShowHelp
          showRectangle:(BOOL)shouldShowRectangle
               keepOpen:(BOOL)shouldKeepOpen
         useFrontCamera:(BOOL)shouldUseFrontCamera
@@ -80,4 +81,5 @@
 @protocol ZXingDelegate
 - (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)result;
 - (void)zxingControllerDidCancel:(ZXingWidgetController*)controller;
+- (void)zxingControllerShowHelp:(ZXingWidgetController*)controller;
 @end

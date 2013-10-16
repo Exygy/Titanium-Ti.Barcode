@@ -56,6 +56,7 @@
 - (id)initWithDelegate:(id<ZXingDelegate>)scanDelegate
             showCancel:(BOOL)shouldShowCancel
              showFlash:(BOOL)shouldShowFlash
+              showHelp:(BOOL)shouldShowHelp
          showRectangle:(BOOL)shouldShowRectangle
               keepOpen:(BOOL)shouldKeepOpen
         useFrontCamera:(BOOL)shouldUseFrontCamera
@@ -73,6 +74,7 @@
         OverlayView *theOverlayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds 
                                                            cancelEnabled:shouldShowCancel
                                                             flashEnabled:shouldShowFlash
+                                                             helpEnabled:shouldShowHelp
                                                         rectangleEnabled:shouldShowRectangle
                                                                 oneDMode:oneDMode
                                                              withOverlay:overlay];
@@ -110,6 +112,14 @@
     }
 }
 
+- (void)showHelp {
+    [self stopCapture];
+
+    if (delegate != nil) {
+        [delegate zxingControllerShowHelp:self];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -144,6 +154,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     self.wantsFullScreenLayout = YES;
     if ([self soundToPlay] != nil) {
         OSStatus error = AudioServicesCreateSystemSoundID((CFURLRef)[self soundToPlay], &beepSound);
@@ -152,6 +163,11 @@
         }
     }
 }
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

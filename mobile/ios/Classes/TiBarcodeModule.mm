@@ -49,7 +49,7 @@ static zxing::DecodeHints decodeHints;
 	// has been commented out in the current library implementation because
 	// it has not been officially passed by QA. However, it does appear to
 	// work sufficiently in testing. We can add support for the DataMatrixReader
-	// format by adding it to the set of readers supported in the hints field. 
+	// format by adding it to the set of readers supported in the hints field.
 	//
 	// If the DataMatrixReader is enabled in a future release of ZXing then
 	// we can remove this call to add it. But, no harm is done if it is already
@@ -111,7 +111,6 @@ static zxing::DecodeHints decodeHints;
 
 -(void)_cleanup
 {
-
 	if (upc_controller!=nil)
 	{
         [self forgetSelf];
@@ -120,7 +119,6 @@ static zxing::DecodeHints decodeHints;
 	}
 	RELEASE_TO_NIL(upc_controller);
 	
-    
     if (controller!=nil)
 	{
         [self forgetSelf];
@@ -234,32 +232,19 @@ static zxing::DecodeHints decodeHints;
     NSString *version = [[UIDevice currentDevice] systemVersion];
     BOOL isAtLeast7 = [version hasPrefix:@"7."];
     
-    
-    NSLog(@"Plugin starting");
-    
-
-    
     if(isAtLeast7){
-    
-        NSLog(@"isAtLeast7");
-        
         // USE iOs7 Built-in Barcode Scanner
         upc_controller = [[UPCScannerController alloc] initWithDelegate:self
                                                              showCancel:YES
-                                                              showFlash:show_flash];
-
-        
+                                                              showFlash:show_flash
+                                                               showHelp:YES];
         [[TiApp app] showModalController:upc_controller animated:YES];
-        NSLog(@"Should be showing modal upc_controller");
     }else{
-
-        NSLog(@"isNot7");
-
-        
         // USE ZXingWidgetController == XZing barcode scanner
         controller = [[ZXingWidgetController alloc] initWithDelegate:self
                                                           showCancel:YES
                                                            showFlash:show_flash
+                                                            showHelp:YES
                                                        showRectangle:YES
                                                             keepOpen:NO
                                                       useFrontCamera:NO
@@ -299,6 +284,12 @@ static zxing::DecodeHints decodeHints;
 	{
 		[self performSelector:@selector(zxingControllerDidCancel:) withObject:nil];
 	}
+
+	if (upc_controller!=nil)
+	{
+		[self performSelector:@selector(UPCScannerControllerDidCancel:) withObject:nil];
+	}
+
 }
 
 #pragma mark System Properties
@@ -584,8 +575,24 @@ MAKE_SYSTEM_PROP(FORMAT_ITF,zxing::BarcodeFormat_ITF);
 		// anything else is assumed to be text
 		[event setObject:[self TEXT] forKey:@"contentType"];
 	}
-    [self fireEvent:@"success" withObject:event];
+    
+    @try {
+        NSLog(@"trying");
+        [self fireEvent:@"scannerSuccess" withObject:event];
+    }
+    @catch (NSException * e) {
+        NSLog(@"catch");
+        [self fireEvent:@"error" withObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:[e reason], @"message", nil]];
+    }
+    
 }
+
+#pragma mark Listener Notifications
+
+-(void)_listenerAdded:(NSString *)type count:(int)count{
+    NSLog(@"%@ event added, count: %i", type, count); }
+-(void)_listenerRemoved:(NSString *)type count:(int)count{
+    NSLog(@"%@ event removed, count: %i", type, count); }
 
 - (void)handleSuccessResult:(NSString *)result
 {
@@ -609,10 +616,13 @@ MAKE_SYSTEM_PROP(FORMAT_ITF,zxing::BarcodeFormat_ITF);
 
 - (void)UPCScannerControllerDidCancel:(UPCScannerController*)controller_
 {
-    
-    NSLog(@"cancel!!!");
-    
     [self fireEvent:@"cancel" withObject:[NSMutableDictionary dictionary]];
+	[self _cleanup];
+}
+
+- (void)UPCScannerControllerShowHelp:(UPCScannerController *)controller_
+{
+    [self fireEvent:@"show_help" withObject:[NSMutableDictionary dictionary]];
 	[self _cleanup];
 }
 
@@ -629,6 +639,12 @@ MAKE_SYSTEM_PROP(FORMAT_ITF,zxing::BarcodeFormat_ITF);
 - (void)zxingControllerDidCancel:(ZXingWidgetController*)controller_
 {
     [self fireEvent:@"cancel" withObject:[NSMutableDictionary dictionary]];
+	[self _cleanup];
+}
+
+- (void)zxingControllerShowHelp:(ZXingWidgetController*)controller_
+{
+    [self fireEvent:@"show_help" withObject:[NSMutableDictionary dictionary]];
 	[self _cleanup];
 }
 

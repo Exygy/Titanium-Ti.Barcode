@@ -20,7 +20,8 @@
 
 - (id)initWithDelegate:(id<UPCScannerDelegate>)scanDelegate
             showCancel:(BOOL)shouldShowCancel
-             showFlash:(BOOL)shouldShowFlash {
+             showFlash:(BOOL)shouldShowFlash
+              showHelp:(BOOL)shouldShowHelp{
     self = [super init];
     
     if (self) {
@@ -28,6 +29,7 @@
         OverlayView *theOverlayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds
                                                            cancelEnabled:shouldShowCancel
                                                             flashEnabled:shouldShowFlash
+                                                             helpEnabled:shouldShowHelp
                                                         rectangleEnabled:TRUE
                                                                 oneDMode:TRUE
                                                              withOverlay:nil];
@@ -109,6 +111,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.overlayView removeFromSuperview];
+    [self.preview removeFromSuperlayer];
     [self stopCapture];
 }
 
@@ -139,7 +142,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     
     if(upcCode){
         [self stopCapture];
-        NSLog(@"Barcode: %@", upcCode);
         if (self.delegate != nil) {
             [self.delegate UPCScannerController:self didScanResult:upcCode];
         }
@@ -154,12 +156,29 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     }
 }
 
+- (void)showHelp {
+    [self stopCapture];
+    
+    if (self.delegate != nil) {
+        [self.delegate UPCScannerControllerShowHelp:self];
+    }
+}
+
 - (void)stopCapture {
-    [self.session stopRunning];
+    if(self.session){
+        [self.session stopRunning];
+        [self.session removeInput:self.input];
+        [self.session removeOutput:self.output];
+        self.input = nil;
+        self.output = nil;
+        self.device = nil;
+        self.session = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
+    [self stopCapture];
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

@@ -23,6 +23,7 @@ static const CGFloat kPadding = 10;
 @interface OverlayView()
 @property (nonatomic,assign) UIButton *cancelButton;
 @property (nonatomic,assign) UIButton *flashButton;
+@property (nonatomic,assign) UIButton *helpButton;
 @property (nonatomic,retain) UILabel *instructionsLabel;
 @end
 
@@ -33,6 +34,7 @@ static const CGFloat kPadding = 10;
 @synthesize points = _points;
 @synthesize cancelButton;
 @synthesize flashButton;
+@synthesize helpButton;
 @synthesize cropRect;
 @synthesize instructionsLabel;
 @synthesize displayedMessage;
@@ -41,6 +43,7 @@ static const CGFloat kPadding = 10;
 - (id) initWithFrame:(CGRect)theFrame
        cancelEnabled:(BOOL)isCancelEnabled
         flashEnabled:(BOOL)isFlashEnabled
+         helpEnabled:(BOOL)isHelpEnabled
     rectangleEnabled:(BOOL)isRectangleEnabled
             oneDMode:(BOOL)isOneDModeEnabled
          withOverlay:(UIView*)overlay {
@@ -84,6 +87,22 @@ static const CGFloat kPadding = 10;
             [self addSubview:flashButton];
         }
         
+        if (isHelpEnabled) {
+            UIButton *butt = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.helpButton = butt;
+            helpButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            helpButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [helpButton setTitle: @"" forState: UIControlStateNormal];
+            CGSize theSize = CGSizeMake(35, 35);
+            CGRect theRect = CGRectMake(10, (theFrame.size.height-theSize.height-10), theSize.width, theSize.height);
+            [helpButton setFrame:theRect];
+            [helpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [helpButton setBackgroundImage:[UIImage imageNamed:@"/images/camera_help.png"] forState:UIControlStateNormal];
+            helpButton.transform = CGAffineTransformMakeRotation(90.0*M_PI/180.0);
+            [helpButton addTarget:self action:@selector(showHelp:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:helpButton];
+        }
+        
         // add Label
         CGSize theSize = CGSizeMake(380, 15);
         CGRect theRect = CGRectMake(-(theSize.width/2)-(theSize.height/2)+(rectMargin/2), ((self.frame.size.height - theSize.height) / 2), theSize.width, theSize.height);
@@ -106,6 +125,12 @@ static const CGFloat kPadding = 10;
 	// call delegate to cancel this scanner
 	if (delegate != nil) {
 		[delegate cancelled];
+	}
+}
+
+- (void)showHelp:(id)sender {
+	if (delegate != nil) {
+		[delegate showHelp];
 	}
 }
 

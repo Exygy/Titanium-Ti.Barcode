@@ -12,7 +12,7 @@
 
 @protocol UPCScannerDelegate;
 
-@interface UPCScannerController : UIViewController <CancelDelegate, AVCaptureMetadataOutputObjectsDelegate>{
+@interface UPCScannerController : UIViewController <CancelDelegate, HelpDelegate, AVCaptureMetadataOutputObjectsDelegate>{
     id<UPCScannerDelegate> delegate;
     OverlayView *overlayView;
 }
@@ -33,10 +33,12 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
 
 - (id)initWithDelegate:(id<UPCScannerDelegate>)delegate
             showCancel:(BOOL)shouldShowCancel
-             showFlash:(BOOL)shouldShowFlash;
+             showFlash:(BOOL)shouldShowFlash
+              showHelp:(BOOL)shouldShowHelp;
 @end
 
 @protocol UPCScannerDelegate
 - (void)UPCScannerController:(UPCScannerController*)controller didScanResult:(NSString *)result;
 - (void)UPCScannerControllerDidCancel:(UPCScannerController*)controller;
+- (void)UPCScannerControllerShowHelp:(UPCScannerController*)controller;
 @end
